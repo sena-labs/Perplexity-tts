@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perplexity TTS — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-logo">
+        <img src="icons/icon48.png" alt="Perplexity TTS" width="40" height="40">
+        <div>
+          <h1>Perplexity TTS</h1>
+          <p>Multi-provider TTS — OpenAI, OpenRouter, ElevenLabs</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ── Provider + API Key + Voice ───────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">🔌 TTS Provider</h2>
+        <div class="field">
+          <label for="provider">Provider</label>
+          <select id="provider" class="select"></select>
+        </div>
+        <div class="field">
+          <label for="apiKey">API Key</label>
+          <div class="input-row">
+            <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" spellcheck="false">
+            <button id="toggleKey" class="btn btn-secondary btn-sm" title="Show/hide">👁</button>
+            <button id="verifyKey" class="btn btn-secondary btn-sm">Verify</button>
+          </div>
+          <p id="keyStatus" class="hint"></p>
+          <p id="keyHint" class="hint"></p>
+          <p class="hint">Keys are stored locally in your browser, one per provider. Never synced or sent to third parties.</p>
+        </div>
+        <div class="field">
+          <label for="model">Model</label>
+          <input type="text" id="model" list="modelList" autocomplete="off" spellcheck="false" placeholder="pick from the list ▾ or type a model id">
+          <datalist id="modelList"></datalist>
+          <p id="modelHint" class="hint"></p>
+        </div>
+        <div class="field">
+          <label for="voice">Voice</label>
+          <input type="text" id="voice" list="voiceList" autocomplete="off" spellcheck="false" placeholder="voice">
+          <datalist id="voiceList"></datalist>
+          <div id="elevenVoiceRow" style="display:none; margin-top:8px;">
+            <div class="input-row">
+              <button id="fetchModels" class="btn btn-secondary btn-sm">⟳ Models</button>
+              <button id="fetchVoices" class="btn btn-secondary btn-sm">⟳ My voices</button>
+            </div>
+            <p id="voiceStatus" class="hint"></p>
+          </div>
+        </div>
+        <div class="field">
+          <button id="previewVoice" class="btn btn-secondary">▶ Preview voice</button>
+          <span id="previewStatus" class="hint"></span>
+        </div>
+      </section>
+
+      <!-- ── Speed ─────────────────────────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">⚡ Speed</h2>
+        <div class="field">
+          <div class="slider-row">
+            <label for="speed">Speed</label>
+            <span id="speedValue" class="value-badge">1.0×</span>
+          </div>
+          <input type="range" id="speed" min="0.25" max="4.0" step="0.05" value="1.0">
+          <div class="slider-labels">
+            <span>0.25×</span>
+            <span>1×</span>
+            <span>2×</span>
+            <span>4×</span>
+          </div>
+          <p class="hint">gpt-4o-mini-tts has no numeric speed parameter: speed is applied as a voice instruction to the model, so it's approximate.</p>
+        </div>
+      </section>
+
+      <!-- ── Instructions ───────────────────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">📝 Voice Instructions</h2>
+        <div class="field">
+          <label for="instructions">Personality / Style</label>
+          <textarea
+            id="instructions"
+            rows="3"
+            maxlength="500"
+            placeholder="Read in a clear, professional tone, like a neutral narrator. Brief pause after bullet points."
+          ></textarea>
+          <p class="hint"><span id="instrCount">0</span>/500 characters. Instructions passed to the model to control style and tone. Supported by gpt-4o-mini-tts models (OpenAI / OpenRouter).</p>
+        </div>
+      </section>
+
+      <!-- ── Format ─────────────────────────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">🔊 Audio Format</h2>
+        <p class="card-subtitle">Applies to OpenAI. OpenRouter → MP3, ElevenLabs → MP3 (fixed).</p>
+        <div class="field">
+          <div class="radio-group" id="formatGroup">
+            <label class="radio-card">
+              <input type="radio" name="format" value="mp3" checked>
+              <span class="radio-label">
+                <strong>MP3</strong>
+                <small>Compatible everywhere, good quality</small>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="format" value="opus">
+              <span class="radio-label">
+                <strong>Opus</strong>
+                <small>High quality, small files</small>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="format" value="aac">
+              <span class="radio-label">
+                <strong>AAC</strong>
+                <small>Apple/mobile standard</small>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="format" value="flac">
+              <span class="radio-label">
+                <strong>FLAC</strong>
+                <small>Lossless, large files</small>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="format" value="wav">
+              <span class="radio-label">
+                <strong>WAV</strong>
+                <small>Uncompressed</small>
+              </span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Reading Mode ───────────────────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">⚙️ Reading Mode</h2>
+        <div class="field">
+          <div class="toggle-option" id="streamingOptions">
+            <label class="radio-card radio-card--wide">
+              <input type="radio" name="streaming" value="complete" checked>
+              <span class="radio-label">
+                <strong>Full response</strong>
+                <small>Waits for Perplexity to finish generating, then sends it all to the provider. More coherent, natural audio.</small>
+              </span>
+            </label>
+            <label class="radio-card radio-card--wide">
+              <input type="radio" name="streaming" value="stream">
+              <span class="radio-label">
+                <strong>Read sentence by sentence (streaming)</strong>
+                <small>Starts reading sentence by sentence as soon as available. Minimal latency, but small pauses between sentences are possible.</small>
+              </span>
+            </label>
+          </div>
+          <label class="checkbox-row" style="margin-top:14px;">
+            <input type="checkbox" id="autoRead">
+            <span>
+              <strong>Auto-read new answers</strong>
+              <small>Automatically start reading each new Perplexity answer (no click). The browser may need one interaction with the page first.</small>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- ── Text Cleaning ──────────────────────────────────────────────── -->
+      <section class="card">
+        <h2 class="card-title">🧹 Text Cleanup</h2>
+        <p class="card-subtitle">What to remove/transform before reading</p>
+        <div class="field">
+          <div class="checkbox-group">
+            <label class="checkbox-row">
+              <input type="checkbox" id="cleanCitations" checked>
+              <span>
+                <strong>Remove numeric citations [1] [2] [3]</strong>
+                <small>Removes Perplexity reference markers that break the flow</small>
+              </span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="skipCodeBlocks" checked>
+              <span>
+                <strong>Skip code blocks</strong>
+                <small>Reads "code block" instead of raw code</small>
+              </span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="skipRelated" checked>
+              <span>
+                <strong>Skip "Related questions" section</strong>
+                <small>Doesn't read the follow-up questions at the end of the answer</small>
+              </span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" id="cleanMarkdown" checked>
+              <span>
+                <strong>Convert markdown to clean text</strong>
+                <small>Removes **, ##, *, backtick and other markdown symbols</small>
+              </span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <button id="saveBtn" class="btn btn-primary">💾 Save settings</button>
+      <span id="saveStatus" class="hint"></span>
+    </footer>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perplexity TTS</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+
+    <!-- Header -->
+    <div class="popup-header">
+      <img src="icons/icon32.png" alt="" width="20" height="20">
+      <span class="popup-title">Perplexity TTS</span>
+      <span id="keyIndicator" class="key-indicator" title="API key status"></span>
+    </div>
+
+    <!-- API Key Section -->
+    <div class="section" id="apiKeySection">
+      <div class="section-label">🔑 API Key <span id="popupProvider">OpenAI</span></div>
+      <div class="key-input-row">
+        <input
+          type="password"
+          id="popupApiKey"
+          placeholder="sk-..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button id="popupToggleKey" class="icon-btn" title="Show/hide">👁</button>
+      </div>
+      <div class="key-actions">
+        <button id="popupSaveKey" class="btn-save">Save</button>
+        <button id="popupVerifyKey" class="btn-verify">Verify</button>
+        <span id="popupKeyStatus" class="key-status-text"></span>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Playback Status -->
+    <div class="status-row">
+      <span id="statusText" class="status-text">No active playback</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="btnStop" class="ctrl-btn" title="Stop">⏹ Stop</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="popup-footer">
+      <button id="openSettings" class="link-btn">⚙ All settings</button>
+    </div>
+
+  </div>
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

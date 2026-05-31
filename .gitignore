@@ -1,0 +1,13 @@
+# Local tooling / state — NOT part of the extension
+ruvector.db
+.claude/
+.remember/
+
+# Dependencies & build artifacts
+node_modules/
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

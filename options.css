@@ -1,0 +1,210 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   Perplexity TTS — Options
+   Enterprise system: neutral slate surfaces, single indigo accent,
+   automatic light/dark, restrained depth, disciplined typography.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #0f1115;
+  --surface: #16181d;
+  --surface-2: #1b1e24;
+  --surface-3: #20242b;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-2: rgba(255, 255, 255, 0.16);
+  --text: #e6e8eb;
+  --text-dim: #9ba1aa;
+  --text-faint: #6b7280;
+
+  --accent: #6366f1;
+  --accent-strong: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-weak: rgba(99, 102, 241, 0.16);
+  --accent-line: rgba(99, 102, 241, 0.55);
+  --ok: #34d399;
+  --err: #f87171;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -16px rgba(0, 0, 0, 0.7);
+  --ring: 0 0 0 3px var(--accent-weak);
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --surface-3: #f3f4f6;
+    --border: #e3e6ea;
+    --border-2: #d3d7dd;
+    --text: #15181c;
+    --text-dim: #5a616b;
+    --text-faint: #8a919b;
+    --accent: #4f46e5;
+    --accent-strong: #4338ca;
+    --accent-weak: rgba(79, 70, 229, 0.10);
+    --accent-line: rgba(79, 70, 229, 0.45);
+    --ok: #059669;
+    --err: #dc2626;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.10);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-weak); }
+
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
+.container { max-width: 680px; margin: 0 auto; padding: 36px 22px 100px; }
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.header { margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+.header-logo { display: flex; align-items: center; gap: 14px; }
+.header-logo img { border-radius: 10px; }
+.header-logo h1 { font-size: 21px; font-weight: 650; letter-spacing: -0.02em; color: var(--text); }
+.header-logo p { font-size: 12.5px; color: var(--text-dim); margin-top: 2px; }
+
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  animation: fade 0.32s ease both;
+}
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.card-title { font-size: 14.5px; font-weight: 640; letter-spacing: -0.01em; color: var(--text); margin-bottom: 3px; }
+.card-subtitle { font-size: 12px; color: var(--text-dim); margin: 2px 0 18px; }
+
+/* ─── Fields ─────────────────────────────────────────────────────────────── */
+.field { margin-bottom: 18px; }
+.field:last-child { margin-bottom: 0; }
+.card > .field:first-of-type { margin-top: 18px; }
+
+label:not(.radio-card):not(.checkbox-row) {
+  display: block; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-dim); margin-bottom: 7px;
+}
+
+/* ─── Inputs ─────────────────────────────────────────────────────────────── */
+input[type="password"], input[type="text"], textarea, select.select, .select {
+  width: 100%;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.14s, box-shadow 0.14s;
+}
+input::placeholder, textarea::placeholder { color: var(--text-faint); }
+input:hover, textarea:hover, .select:hover { border-color: var(--border-2); }
+input[type="password"]:focus, input[type="text"]:focus, textarea:focus, .select:focus {
+  border-color: var(--accent-line); box-shadow: var(--ring);
+}
+textarea { min-height: 82px; resize: vertical; line-height: 1.55; }
+#apiKey, #model { font-family: var(--mono); font-size: 12.5px; }
+
+.select { cursor: pointer; appearance: none; padding-right: 34px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%), linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 17px, calc(100% - 13px) 17px;
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+
+.input-row { display: flex; gap: 8px; align-items: stretch; }
+.input-row input { flex: 1; min-width: 0; }
+
+/* ─── Range ──────────────────────────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none; width: 100%; height: 4px;
+  background: var(--border-2); border-radius: 999px; outline: none; cursor: pointer; margin-top: 4px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--border-2); cursor: pointer; transition: transform 0.12s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+.slider-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.value-badge {
+  font-size: 12.5px; font-weight: 640; color: var(--accent);
+  background: var(--accent-weak); padding: 2px 9px; border-radius: 6px; font-variant-numeric: tabular-nums;
+}
+.slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-faint); margin-top: 7px; font-variant-numeric: tabular-nums; }
+
+/* ─── Radio cards ────────────────────────────────────────────────────────── */
+.radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.radio-card {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: var(--surface-3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 11px 13px; cursor: pointer;
+  transition: border-color 0.14s, background 0.14s;
+}
+.radio-card:hover { border-color: var(--border-2); }
+.radio-card:has(input:checked) { border-color: var(--accent-line); background: var(--accent-weak); }
+.radio-card input[type="radio"] { width: auto; margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+.radio-label strong { display: block; font-size: 13px; color: var(--text); margin-bottom: 2px; font-weight: 600; }
+.radio-label small { display: block; font-size: 11.5px; color: var(--text-dim); line-height: 1.45; }
+.radio-card--wide { width: 100%; }
+
+/* ─── Checkboxes ─────────────────────────────────────────────────────────── */
+.checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+.checkbox-row { display: flex; align-items: flex-start; gap: 11px; cursor: pointer; padding: 3px; margin: -3px; border-radius: 7px; transition: background 0.14s; }
+.checkbox-row:hover { background: var(--surface-3); }
+.checkbox-row input[type="checkbox"] { width: 16px; height: 16px; margin-top: 1px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+.checkbox-row strong { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+.checkbox-row small { display: block; font-size: 11.5px; color: var(--text-dim); margin-top: 1px; }
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 9px 16px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  cursor: pointer; border: 1px solid transparent; white-space: nowrap;
+  transition: background 0.14s, border-color 0.14s, box-shadow 0.14s, transform 0.08s;
+}
+.btn:focus-visible { box-shadow: var(--ring); outline: none; }
+.btn:active { transform: translateY(0.5px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover:not(:disabled) { background: var(--accent-strong); }
+.btn-secondary { background: var(--surface-3); color: var(--text); border-color: var(--border); }
+.btn-secondary:hover:not(:disabled) { border-color: var(--accent-line); color: var(--accent); }
+.btn-sm { padding: 8px 11px; font-size: 12.5px; }
+
+/* ─── Hints ──────────────────────────────────────────────────────────────── */
+.hint { font-size: 11.5px; color: var(--text-faint); margin-top: 7px; line-height: 1.5; }
+.hint--success { color: var(--ok); }
+.hint--error { color: var(--err); }
+
+/* ─── Code ───────────────────────────────────────────────────────────────── */
+code { background: var(--accent-weak); border-radius: 5px; padding: 1px 6px; font-size: 12px; color: var(--accent); font-family: var(--mono); }
+
+/* ─── Footer (sticky save bar) ───────────────────────────────────────────── */
+.footer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 22px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+}
+.footer .btn-primary { padding: 10px 20px; }
+
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } * { transition: none !important; } }
