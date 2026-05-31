@@ -87,6 +87,14 @@ popup.*           quick popup: active provider + key
 icons/            16/32/48/128
 ```
 
+## Support
+
+If this extension is useful to you, you can support development on Ko-fi:
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/senalabs)
+
+Donate: [ko-fi.com/senalabs](https://ko-fi.com/senalabs)
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md). Current version: **2.0.0**.
