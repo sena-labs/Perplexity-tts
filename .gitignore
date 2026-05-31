@@ -7,6 +7,9 @@ ruvector.db
 node_modules/
 *.zip
 
+# Store marketing images — reproducible via store-assets/_render.js & _promo.js
+store-assets/*.png
+
 # OS / editor
 .DS_Store
 Thumbs.db
