@@ -179,8 +179,12 @@ function playStreamed(button, fallbackMime, startProducer) {
     if (!next) { if (done) finish(); return; }
     if (!started) { started = true; setButtonState(button, 'playing'); }
     busy = true;
-    const audio = playArrayBuffer(next.audio, next.mime || fallbackMime, () => { busy = false; pump(); });
-    audio.addEventListener('error', () => { busy = false; pump(); }, { once: true });
+    // Guard: a single clip must advance the queue only once, even if both
+    // 'ended' and 'error' fire for it — otherwise pump() could skip/overlap.
+    let settled = false;
+    const advance = () => { if (settled) return; settled = true; busy = false; pump(); };
+    const audio = playArrayBuffer(next.audio, next.mime || fallbackMime, advance);
+    audio.addEventListener('error', advance, { once: true });
   }
 
   port.onMessage.addListener((msg) => {
