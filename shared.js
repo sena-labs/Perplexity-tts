@@ -17,17 +17,17 @@ var DEFAULT_SETTINGS = {
 
 // ── OpenAI voice set (shared by OpenAI + OpenRouter openai-family models) ─────
 var OPENAI_VOICES = [
-  { id: 'alloy',   desc: 'Neutro, bilanciato' },
-  { id: 'ash',     desc: 'Caldo, conversazionale' },
-  { id: 'ballad',  desc: 'Melodioso, espressivo' },
-  { id: 'coral',   desc: 'Luminoso, amichevole' },
-  { id: 'echo',    desc: 'Pulito, preciso' },
-  { id: 'fable',   desc: 'Narrativo, coinvolgente' },
-  { id: 'nova',    desc: 'Moderno, nitido' },
-  { id: 'onyx',    desc: 'Profondo, autorevole' },
-  { id: 'sage',    desc: 'Calmo, riflessivo' },
-  { id: 'shimmer', desc: 'Leggero, vivace' },
-  { id: 'verse',   desc: 'Versatile, espressivo' },
+  { id: 'alloy',   desc: 'Neutral, balanced' },
+  { id: 'ash',     desc: 'Warm, conversational' },
+  { id: 'ballad',  desc: 'Melodic, expressive' },
+  { id: 'coral',   desc: 'Bright, friendly' },
+  { id: 'echo',    desc: 'Clean, precise' },
+  { id: 'fable',   desc: 'Narrative, engaging' },
+  { id: 'nova',    desc: 'Modern, crisp' },
+  { id: 'onyx',    desc: 'Deep, authoritative' },
+  { id: 'sage',    desc: 'Calm, reflective' },
+  { id: 'shimmer', desc: 'Light, lively' },
+  { id: 'verse',   desc: 'Versatile, expressive' },
 ];
 var OPENAI_VOICE_IDS = OPENAI_VOICES.map((v) => v.id);
 
@@ -66,7 +66,7 @@ var PROVIDERS = {
     keyPlaceholder: 'sk-or-...',
     keyHint: 'OpenRouter key (openrouter.ai/keys). Routes TTS models from several providers.',
     models: [
-      { id: 'openai/gpt-4o-mini-tts-2025-12-15',   label: 'OpenAI gpt-4o-mini-tts' },
+      { id: 'openai/gpt-4o-mini-tts',               label: 'OpenAI gpt-4o-mini-tts' },
       { id: 'google/gemini-3.1-flash-tts-preview', label: 'Google Gemini Flash TTS' },
       { id: 'hexgrad/kokoro-82m',                   label: 'Kokoro 82M' },
       { id: 'canopylabs/orpheus-3b-0.1-ft',         label: 'Orpheus 3B' },
@@ -93,6 +93,6 @@ var PROVIDER_ORDER = ['openai', 'openrouter', 'elevenlabs'];
 // ── Default per-provider configuration ────────────────────────────────────────
 var DEFAULT_PROVIDER_CONFIG = {
   openai:     { model: 'gpt-4o-mini-tts', voice: 'nova' },
-  openrouter: { model: 'openai/gpt-4o-mini-tts-2025-12-15', voice: 'nova' },
+  openrouter: { model: 'openai/gpt-4o-mini-tts', voice: 'nova' },
   elevenlabs: { model: 'eleven_multilingual_v2', voiceId: '' },
 };

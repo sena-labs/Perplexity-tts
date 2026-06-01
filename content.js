@@ -304,9 +304,12 @@ function extractText(el, stripCitations) {
 
   // Use prose descendants when available — avoids pulling in action-bar button text
   // Use textContent (not innerText) since clone is detached and has no layout context
-  const proseEls = clone.querySelectorAll('[class*="prose"]');
+  const proseEls = Array.from(clone.querySelectorAll('[class*="prose"]'));
   if (proseEls.length > 0) {
-    return Array.from(proseEls)
+    // Drop any prose node nested inside another matched prose, otherwise its text
+    // would be counted twice (outer textContent already includes the inner).
+    const topLevel = proseEls.filter((p) => !proseEls.some((q) => q !== p && q.contains(p)));
+    return topLevel
       .map((p) => (p.textContent || '').trim())
       .filter((t) => t.length > 0)
       .join('\n\n')
