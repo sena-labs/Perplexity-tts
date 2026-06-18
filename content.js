@@ -5,6 +5,7 @@ const state = {
   currentAudio: null,
   currentObjectURL: null,
   currentPort: null,
+  currentStreamCleanup: null,
   isPlaying: false,
   activeButton: null,
   settings: null,
@@ -91,6 +92,13 @@ function toArrayBuffer(data) {
 }
 
 function stopCurrentAudio() {
+  // Tear down any live stream producer (e.g. the sentence-feeder MutationObserver
+  // and its timers) — disconnecting the port alone does not run playStreamed's
+  // finish(), so without this the feeder keeps observing and re-extracting forever.
+  if (typeof state.currentStreamCleanup === 'function') {
+    try { state.currentStreamCleanup(); } catch (_) {}
+    state.currentStreamCleanup = null;
+  }
   if (state.currentPort) {
     try { state.currentPort.disconnect(); } catch (_) {}
     state.currentPort = null;
@@ -165,6 +173,7 @@ function playStreamed(button, fallbackMime, startProducer) {
     if (finished) return;
     finished = true;
     if (typeof producerCleanup === 'function') { try { producerCleanup(); } catch (_) {} }
+    if (state.currentStreamCleanup === producerCleanup) state.currentStreamCleanup = null;
     try { port.disconnect(); } catch (_) {}
     if (state.currentPort === port) state.currentPort = null;
     if (state.activeButton === button) { setButtonState(button, 'idle'); state.activeButton = null; }
@@ -196,6 +205,9 @@ function playStreamed(button, fallbackMime, startProducer) {
   });
 
   producerCleanup = startProducer(port);
+  // Expose the producer cleanup so stopCurrentAudio() can tear it down even when
+  // playback is stopped externally (port disconnect doesn't call finish()).
+  if (typeof producerCleanup === 'function') state.currentStreamCleanup = producerCleanup;
 }
 
 // Live "read-along" feeder for stream mode: watches the answer while it is being
