@@ -14,3 +14,4 @@ store-assets/*.png
 .DS_Store
 Thumbs.db
 *.log
+perplexity-tts-*.zip

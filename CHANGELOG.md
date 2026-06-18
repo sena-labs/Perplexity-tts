@@ -4,6 +4,13 @@ All notable changes to Perplexity TTS are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/); this project
 follows [Semantic Versioning](https://semver.org/).
 
+## [2.0.1] — 2026-06-18
+
+### Fixed
+- Stream producer is now torn down when reading is stopped externally (e.g. from
+  another tab or on navigation), preventing a detached stream from continuing to
+  push audio after stop.
+
 ## [2.0.0] — 2026-05-31
 
 Major release: multi-provider TTS, live streaming read-along, and a redesigned UI.
