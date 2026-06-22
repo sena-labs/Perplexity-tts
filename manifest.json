@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Perplexity TTS",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Reads Perplexity.ai answers aloud with multi-provider TTS (OpenAI, OpenRouter, ElevenLabs). Listen button on every answer.",
   "permissions": ["storage"],
   "host_permissions": [
