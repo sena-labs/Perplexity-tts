@@ -4,6 +4,17 @@ All notable changes to Perplexity TTS are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/); this project
 follows [Semantic Versioning](https://semver.org/).
 
+## [2.0.2] — 2026-06-22
+
+### Fixed
+- Blob object URLs are now revoked when a clip fails to play (`error` event), not
+  only on `ended`. In streaming playback a failed clip previously leaked its
+  object URL and audio element because `pump()` advanced to the next clip and
+  overwrote the tracked URL before it could be revoked.
+- The `chrome.storage.onChanged` listener now filters by storage area (`local`)
+  and tolerates settings removal, avoiding spurious settings resets from
+  unrelated storage-area changes.
+
 ## [2.0.1] — 2026-06-18
 
 ### Fixed

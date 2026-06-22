@@ -22,10 +22,9 @@ function loadSettings() {
   });
 }
 
-chrome.storage.onChanged.addListener((changes) => {
-  if (changes.settings) {
-    state.settings = { ...DEFAULT_SETTINGS, ...changes.settings.newValue };
-  }
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName !== 'local' || !changes.settings) return;
+  state.settings = { ...DEFAULT_SETTINGS, ...(changes.settings.newValue || {}) };
 });
 
 // ─── Text Cleaning ────────────────────────────────────────────────────────────
@@ -130,12 +129,24 @@ function playArrayBuffer(buffer, mimeType, onEnded) {
   const audio = new Audio(url);
   state.currentAudio = audio;
 
-  audio.addEventListener('ended', () => {
+  // Release the blob URL / audio element exactly once, on whichever of
+  // 'ended' or 'error' fires first. In stream mode pump() advances to the
+  // next clip on 'error', overwriting state.currentObjectURL — so without an
+  // error-path revoke the failed clip's blob URL would leak.
+  let released = false;
+  const release = () => {
+    if (released) return;
+    released = true;
     URL.revokeObjectURL(url);
     if (state.currentObjectURL === url) state.currentObjectURL = null;
     if (state.currentAudio === audio) state.currentAudio = null;
+  };
+
+  audio.addEventListener('ended', () => {
+    release();
     if (onEnded) onEnded();
   });
+  audio.addEventListener('error', release, { once: true });
 
   audio.addEventListener('timeupdate', () => {
     if (audio.duration) {
