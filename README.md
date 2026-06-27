@@ -57,6 +57,13 @@ ElevenLabs → elevenlabs.io (Profile → API key).
 - **Mini-player** with a progress bar and stop; stop also available from the popup.
 - **Separate keys per provider**, stored locally.
 
+## Screenshots
+
+<div align="center">
+  <img src="store-assets/screenshot-1-options-1280x800.png" width="49%" alt="Settings page — provider, model, voice">
+  <img src="store-assets/screenshot-2-popup-1280x800.png" width="49%" alt="Quick popup — active provider and stop control">
+</div>
+
 ## Privacy
 
 The answer text is sent **only** to the selected provider's endpoint to generate the audio.
@@ -99,7 +106,7 @@ Donate: [ko-fi.com/senalabs](https://ko-fi.com/senalabs)
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md). Current version: **2.0.1**.
+See [CHANGELOG.md](CHANGELOG.md). Current version: **2.0.2**.
 
 ## License
 
