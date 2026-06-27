@@ -9,6 +9,8 @@ node_modules/
 
 # Store marketing images — reproducible via store-assets/_render.js & _promo.js
 store-assets/*.png
+!store-assets/screenshot-*.png
+!store-assets/store-icon-128x128.png
 
 # OS / editor
 .DS_Store
