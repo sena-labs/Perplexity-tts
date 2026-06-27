@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#4338ca"/>
+      <stop offset="0.55" stop-color="#4f46e5"/>
+      <stop offset="1"    stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="btn-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4338ca"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#1e1b4b" flood-opacity="0.45"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="card-clip">
+      <rect x="620" y="80" width="600" height="480" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- Subtle orbs -->
+  <circle cx="1200" cy="60"  r="280" fill="#fff" opacity="0.04"/>
+  <circle cx="40"   cy="620" r="260" fill="#fff" opacity="0.04"/>
+  <circle cx="640"  cy="320" r="380" fill="#fff" opacity="0.025"/>
+
+  <!-- ── LEFT SIDE: branding ── -->
+
+  <!-- Icon: rounded square with play + waves -->
+  <rect x="60" y="192" width="120" height="120" rx="28" fill="#fff" opacity="0.96"/>
+  <!-- play triangle -->
+  <path d="M 97 228 L 97 276 L 147 252 Z" fill="#4f46e5"/>
+  <!-- sound waves -->
+  <g stroke="#4f46e5" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M 152 240 q 8 6 0 14"/>
+    <path d="M 161 233 q 16 11 0 24"/>
+  </g>
+
+  <!-- Title -->
+  <text x="205" y="268" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="72" font-weight="800" fill="#fff" letter-spacing="-1.5">Perplexity TTS</text>
+
+  <!-- Subtitle -->
+  <text x="205" y="318" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="26" font-weight="500" fill="#fff" opacity="0.9">Listen to every Perplexity answer</text>
+
+  <!-- Provider row -->
+  <text x="205" y="362" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="19" font-weight="400" fill="#fff" opacity="0.72">OpenAI · OpenRouter · ElevenLabs</text>
+
+  <!-- Feature pills -->
+  <!-- pill 1 -->
+  <rect x="60" y="405" width="185" height="38" rx="19" fill="#fff" opacity="0.12"/>
+  <text x="152" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="15" font-weight="600" fill="#fff" opacity="0.95">▶ Live streaming</text>
+  <!-- pill 2 -->
+  <rect x="256" y="405" width="138" height="38" rx="19" fill="#fff" opacity="0.12"/>
+  <text x="325" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="15" font-weight="600" fill="#fff" opacity="0.95">Auto-read</text>
+  <!-- pill 3 -->
+  <rect x="405" y="405" width="160" height="38" rx="19" fill="#fff" opacity="0.12"/>
+  <text x="485" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="15" font-weight="600" fill="#fff" opacity="0.95">11 voices</text>
+
+  <!-- ── RIGHT SIDE: browser mockup ── -->
+  <g filter="url(#shadow)">
+    <!-- browser chrome -->
+    <rect x="620" y="80" width="600" height="480" rx="16" fill="#1e1b4b" opacity="0.95"/>
+    <!-- title bar -->
+    <rect x="620" y="80" width="600" height="48" rx="16" fill="#312e81"/>
+    <rect x="620" y="104" width="600" height="24" fill="#312e81"/>
+    <!-- traffic lights -->
+    <circle cx="652" cy="104" r="7" fill="#ef4444"/>
+    <circle cx="676" cy="104" r="7" fill="#f59e0b"/>
+    <circle cx="700" cy="104" r="7" fill="#22c55e"/>
+    <!-- address bar -->
+    <rect x="730" y="91" width="380" height="26" rx="13" fill="#1e1b4b" opacity="0.7"/>
+    <text x="920" y="109" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="13" fill="#a5b4fc" opacity="0.85">perplexity.ai</text>
+
+    <!-- page content area -->
+    <rect x="620" y="128" width="600" height="432" fill="#0f0e23"/>
+
+    <!-- Perplexity answer block -->
+    <rect x="648" y="148" width="544" height="260" rx="10" fill="#1a1a3e" opacity="0.85"/>
+
+    <!-- Question pill -->
+    <rect x="664" y="164" width="200" height="26" rx="13" fill="#4f46e5" opacity="0.4"/>
+    <text x="764" y="182" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="13" fill="#c7d2fe">What is quantum computing?</text>
+
+    <!-- Answer text lines -->
+    <rect x="664" y="202" width="480" height="10" rx="5" fill="#fff" opacity="0.2"/>
+    <rect x="664" y="220" width="460" height="10" rx="5" fill="#fff" opacity="0.15"/>
+    <rect x="664" y="238" width="440" height="10" rx="5" fill="#fff" opacity="0.15"/>
+    <rect x="664" y="256" width="395" height="10" rx="5" fill="#fff" opacity="0.12"/>
+    <rect x="664" y="274" width="470" height="10" rx="5" fill="#fff" opacity="0.15"/>
+    <rect x="664" y="292" width="330" height="10" rx="5" fill="#fff" opacity="0.1"/>
+
+    <!-- divider -->
+    <rect x="664" y="318" width="512" height="1" fill="#fff" opacity="0.07"/>
+
+    <!-- ▶ Listen button — highlighted -->
+    <rect x="664" y="330" width="140" height="40" rx="20" fill="url(#btn-grad)" filter="url(#glow)"/>
+    <text x="734" y="355" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="16" font-weight="700" fill="#fff">▶ Listen</text>
+
+    <!-- glow halo around button -->
+    <rect x="660" y="326" width="148" height="48" rx="24" fill="none"
+          stroke="#818cf8" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Progress bar (mid-play) -->
+    <rect x="664" y="382" width="512" height="4" rx="2" fill="#fff" opacity="0.08"/>
+    <rect x="664" y="382" width="180" height="4" rx="2" fill="#a5b4fc" opacity="0.9"/>
+    <circle cx="844" cy="384" r="6" fill="#fff" filter="url(#glow)"/>
+
+    <!-- Stop btn -->
+    <rect x="800" y="330" width="80" height="40" rx="20" fill="#fff" opacity="0.07"/>
+    <text x="840" y="355" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="14" fill="#fff" opacity="0.6">■ Stop</text>
+
+    <!-- mini player label -->
+    <text x="664" y="418" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="12" fill="#a5b4fc" opacity="0.6">Reading sentence 2 of 5…</text>
+
+    <!-- bottom bar -->
+    <rect x="648" y="430" width="544" height="100" rx="10" fill="#1a1a3e" opacity="0.5"/>
+    <text x="920" y="465" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="13" fill="#7c7fa3">Provider: OpenAI  ·  Model: gpt-4o-mini-tts  ·  Voice: nova</text>
+
+    <!-- Wave visualizer at bottom -->
+    <g opacity="0.5" transform="translate(664,490)">
+      <rect x="0"   y="0" width="6" height="20" rx="3" fill="#818cf8"/>
+      <rect x="12"  y="-8" width="6" height="36" rx="3" fill="#a5b4fc"/>
+      <rect x="24"  y="-14" width="6" height="48" rx="3" fill="#c7d2fe"/>
+      <rect x="36"  y="-6" width="6" height="32" rx="3" fill="#a5b4fc"/>
+      <rect x="48"  y="2" width="6" height="16" rx="3" fill="#818cf8"/>
+      <rect x="60"  y="-10" width="6" height="40" rx="3" fill="#a5b4fc"/>
+      <rect x="72"  y="-16" width="6" height="52" rx="3" fill="#c7d2fe"/>
+      <rect x="84"  y="-4"  width="6" height="28" rx="3" fill="#a5b4fc"/>
+      <rect x="96"  y="0"  width="6" height="20" rx="3" fill="#818cf8"/>
+      <rect x="108" y="-12" width="6" height="44" rx="3" fill="#a5b4fc"/>
+    </g>
+  </g>
+
+  <!-- Chrome extension badge -->
+  <rect x="636" y="508" width="220" height="34" rx="17" fill="#fff" opacity="0.1"/>
+  <text x="746" y="530" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="14" font-weight="500" fill="#fff" opacity="0.8">Chrome Extension  ·  Manifest V3</text>
+</svg>

@@ -1,5 +1,7 @@
 # Perplexity TTS
 
+![Perplexity TTS — listen to any answer](store-assets/banner.svg)
+
 Chrome extension (Manifest V3) that reads [perplexity.ai](https://www.perplexity.ai)
 answers aloud with **multi-provider** TTS. It injects a **▶ Listen** button into every
 answer's action bar and streams the audio sentence by sentence, so it starts reading
@@ -97,7 +99,7 @@ Donate: [ko-fi.com/senalabs](https://ko-fi.com/senalabs)
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md). Current version: **2.0.0**.
+See [CHANGELOG.md](CHANGELOG.md). Current version: **2.0.1**.
 
 ## License
 
