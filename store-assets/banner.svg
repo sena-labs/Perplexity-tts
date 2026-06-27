@@ -5,155 +5,162 @@
       <stop offset="0.55" stop-color="#4f46e5"/>
       <stop offset="1"    stop-color="#6366f1"/>
     </linearGradient>
-    <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.13"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0.04"/>
-    </linearGradient>
     <linearGradient id="btn-grad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#4338ca"/>
       <stop offset="1" stop-color="#6366f1"/>
     </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#1e1b4b" flood-opacity="0.45"/>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="#1e1b4b" flood-opacity="0.5"/>
     </filter>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <clipPath id="card-clip">
-      <rect x="620" y="80" width="600" height="480" rx="16"/>
-    </clipPath>
   </defs>
 
   <!-- Background -->
   <rect width="1280" height="640" fill="url(#bg)"/>
-
   <!-- Subtle orbs -->
-  <circle cx="1200" cy="60"  r="280" fill="#fff" opacity="0.04"/>
-  <circle cx="40"   cy="620" r="260" fill="#fff" opacity="0.04"/>
-  <circle cx="640"  cy="320" r="380" fill="#fff" opacity="0.025"/>
+  <circle cx="1220" cy="50"  r="300" fill="#fff" opacity="0.04"/>
+  <circle cx="30"   cy="620" r="260" fill="#fff" opacity="0.04"/>
+  <circle cx="580"  cy="320" r="420" fill="#fff" opacity="0.022"/>
 
-  <!-- ── LEFT SIDE: branding ── -->
+  <!-- ── LEFT COLUMN: x=60..560 (500px) ── -->
 
-  <!-- Icon: rounded square with play + waves -->
-  <rect x="60" y="192" width="120" height="120" rx="28" fill="#fff" opacity="0.96"/>
+  <!-- Icon: rounded square -->
+  <rect x="60" y="120" width="90" height="90" rx="22" fill="#fff" opacity="0.95"/>
   <!-- play triangle -->
-  <path d="M 97 228 L 97 276 L 147 252 Z" fill="#4f46e5"/>
+  <path d="M 90 142 L 90 178 L 128 160 Z" fill="#4f46e5"/>
   <!-- sound waves -->
-  <g stroke="#4f46e5" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9">
-    <path d="M 152 240 q 8 6 0 14"/>
-    <path d="M 161 233 q 16 11 0 24"/>
+  <g stroke="#4f46e5" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M 133 152 q 7 5 0 13"/>
+    <path d="M 141 146 q 13 10 0 22"/>
   </g>
 
-  <!-- Title -->
-  <text x="205" y="268" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="72" font-weight="800" fill="#fff" letter-spacing="-1.5">Perplexity TTS</text>
+  <!-- Title — x=60, font-size 60, "Perplexity TTS" ~480px wide, stays in left column -->
+  <text x="60" y="272"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="62" font-weight="800" fill="#fff" letter-spacing="-1">Perplexity TTS</text>
 
   <!-- Subtitle -->
-  <text x="205" y="318" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="26" font-weight="500" fill="#fff" opacity="0.9">Listen to every Perplexity answer</text>
+  <text x="60" y="320"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="24" font-weight="500" fill="#fff" opacity="0.9">Listen to every Perplexity answer</text>
 
-  <!-- Provider row -->
-  <text x="205" y="362" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="19" font-weight="400" fill="#fff" opacity="0.72">OpenAI · OpenRouter · ElevenLabs</text>
+  <!-- Providers -->
+  <text x="60" y="360"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="17" font-weight="400" fill="#fff" opacity="0.70">OpenAI · OpenRouter · ElevenLabs</text>
 
-  <!-- Feature pills -->
-  <!-- pill 1 -->
-  <rect x="60" y="405" width="185" height="38" rx="19" fill="#fff" opacity="0.12"/>
-  <text x="152" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="15" font-weight="600" fill="#fff" opacity="0.95">▶ Live streaming</text>
-  <!-- pill 2 -->
-  <rect x="256" y="405" width="138" height="38" rx="19" fill="#fff" opacity="0.12"/>
-  <text x="325" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="15" font-weight="600" fill="#fff" opacity="0.95">Auto-read</text>
-  <!-- pill 3 -->
-  <rect x="405" y="405" width="160" height="38" rx="19" fill="#fff" opacity="0.12"/>
-  <text x="485" y="429" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="15" font-weight="600" fill="#fff" opacity="0.95">11 voices</text>
+  <!-- Feature pills — row, fitting within x=60..560 -->
+  <rect x="60"  y="400" width="158" height="36" rx="18" fill="#fff" opacity="0.12"/>
+  <text x="139" y="423" text-anchor="middle"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="14" font-weight="600" fill="#fff" opacity="0.95">▶ Live streaming</text>
 
-  <!-- ── RIGHT SIDE: browser mockup ── -->
+  <rect x="228" y="400" width="120" height="36" rx="18" fill="#fff" opacity="0.12"/>
+  <text x="288" y="423" text-anchor="middle"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="14" font-weight="600" fill="#fff" opacity="0.95">Auto-read</text>
+
+  <rect x="358" y="400" width="130" height="36" rx="18" fill="#fff" opacity="0.12"/>
+  <text x="423" y="423" text-anchor="middle"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="14" font-weight="600" fill="#fff" opacity="0.95">11 voices</text>
+
+  <!-- Chrome extension badge bottom-left -->
+  <rect x="60"  y="510" width="220" height="34" rx="17" fill="#fff" opacity="0.10"/>
+  <text x="170" y="532" text-anchor="middle"
+        font-family="Inter,Segoe UI,system-ui,sans-serif"
+        font-size="13" font-weight="500" fill="#fff" opacity="0.80">Chrome Extension · MV3</text>
+
+  <!-- ── RIGHT COLUMN: browser mockup x=610..1220 ── -->
   <g filter="url(#shadow)">
-    <!-- browser chrome -->
-    <rect x="620" y="80" width="600" height="480" rx="16" fill="#1e1b4b" opacity="0.95"/>
+    <!-- outer frame -->
+    <rect x="610" y="72" width="620" height="500" rx="16" fill="#1e1b4b"/>
+
     <!-- title bar -->
-    <rect x="620" y="80" width="600" height="48" rx="16" fill="#312e81"/>
-    <rect x="620" y="104" width="600" height="24" fill="#312e81"/>
+    <rect x="610" y="72" width="620" height="46" rx="16" fill="#312e81"/>
+    <rect x="610" y="96"  width="620" height="22" fill="#312e81"/>
+
     <!-- traffic lights -->
-    <circle cx="652" cy="104" r="7" fill="#ef4444"/>
-    <circle cx="676" cy="104" r="7" fill="#f59e0b"/>
-    <circle cx="700" cy="104" r="7" fill="#22c55e"/>
+    <circle cx="642" cy="95" r="7" fill="#ef4444"/>
+    <circle cx="666" cy="95" r="7" fill="#f59e0b"/>
+    <circle cx="690" cy="95" r="7" fill="#22c55e"/>
+
     <!-- address bar -->
-    <rect x="730" y="91" width="380" height="26" rx="13" fill="#1e1b4b" opacity="0.7"/>
-    <text x="920" y="109" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+    <rect x="724" y="82" width="400" height="26" rx="13" fill="#1e1b4b" opacity="0.65"/>
+    <text x="924" y="100" text-anchor="middle"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
           font-size="13" fill="#a5b4fc" opacity="0.85">perplexity.ai</text>
 
-    <!-- page content area -->
-    <rect x="620" y="128" width="600" height="432" fill="#0f0e23"/>
+    <!-- page bg -->
+    <rect x="610" y="118" width="620" height="454" fill="#0f0e23"/>
 
-    <!-- Perplexity answer block -->
-    <rect x="648" y="148" width="544" height="260" rx="10" fill="#1a1a3e" opacity="0.85"/>
+    <!-- answer card -->
+    <rect x="636" y="138" width="568" height="280" rx="12" fill="#1a1a3e" opacity="0.9"/>
 
-    <!-- Question pill -->
-    <rect x="664" y="164" width="200" height="26" rx="13" fill="#4f46e5" opacity="0.4"/>
-    <text x="764" y="182" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+    <!-- question pill -->
+    <rect x="652" y="155" width="220" height="28" rx="14" fill="#4f46e5" opacity="0.45"/>
+    <text x="762" y="174" text-anchor="middle"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
           font-size="13" fill="#c7d2fe">What is quantum computing?</text>
 
-    <!-- Answer text lines -->
-    <rect x="664" y="202" width="480" height="10" rx="5" fill="#fff" opacity="0.2"/>
-    <rect x="664" y="220" width="460" height="10" rx="5" fill="#fff" opacity="0.15"/>
-    <rect x="664" y="238" width="440" height="10" rx="5" fill="#fff" opacity="0.15"/>
-    <rect x="664" y="256" width="395" height="10" rx="5" fill="#fff" opacity="0.12"/>
-    <rect x="664" y="274" width="470" height="10" rx="5" fill="#fff" opacity="0.15"/>
-    <rect x="664" y="292" width="330" height="10" rx="5" fill="#fff" opacity="0.1"/>
+    <!-- answer text lines -->
+    <rect x="652" y="198" width="520" height="10" rx="5" fill="#fff" opacity="0.18"/>
+    <rect x="652" y="216" width="490" height="10" rx="5" fill="#fff" opacity="0.13"/>
+    <rect x="652" y="234" width="460" height="10" rx="5" fill="#fff" opacity="0.13"/>
+    <rect x="652" y="252" width="380" height="10" rx="5" fill="#fff" opacity="0.10"/>
+    <rect x="652" y="270" width="500" height="10" rx="5" fill="#fff" opacity="0.13"/>
 
     <!-- divider -->
-    <rect x="664" y="318" width="512" height="1" fill="#fff" opacity="0.07"/>
+    <rect x="652" y="296" width="536" height="1" fill="#fff" opacity="0.07"/>
 
-    <!-- ▶ Listen button — highlighted -->
-    <rect x="664" y="330" width="140" height="40" rx="20" fill="url(#btn-grad)" filter="url(#glow)"/>
-    <text x="734" y="355" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-          font-size="16" font-weight="700" fill="#fff">▶ Listen</text>
+    <!-- ▶ Listen button highlighted -->
+    <rect x="652" y="308" width="148" height="42" rx="21" fill="url(#btn-grad)" filter="url(#glow)"/>
+    <text x="726" y="334" text-anchor="middle"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="16" font-weight="700" fill="#fff">▶  Listen</text>
+    <!-- glow ring -->
+    <rect x="648" y="304" width="156" height="50" rx="25" fill="none"
+          stroke="#818cf8" stroke-width="1.5" opacity="0.55"/>
 
-    <!-- glow halo around button -->
-    <rect x="660" y="326" width="148" height="48" rx="24" fill="none"
-          stroke="#818cf8" stroke-width="1.5" opacity="0.6"/>
+    <!-- Stop button -->
+    <rect x="812" y="308" width="90" height="42" rx="21" fill="#fff" opacity="0.07"/>
+    <text x="857" y="334" text-anchor="middle"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
+          font-size="14" fill="#fff" opacity="0.55">■ Stop</text>
 
-    <!-- Progress bar (mid-play) -->
-    <rect x="664" y="382" width="512" height="4" rx="2" fill="#fff" opacity="0.08"/>
-    <rect x="664" y="382" width="180" height="4" rx="2" fill="#a5b4fc" opacity="0.9"/>
-    <circle cx="844" cy="384" r="6" fill="#fff" filter="url(#glow)"/>
+    <!-- progress bar -->
+    <rect x="652" y="365" width="536" height="4" rx="2" fill="#fff" opacity="0.07"/>
+    <rect x="652" y="365" width="190" height="4" rx="2" fill="#a5b4fc" opacity="0.9"/>
+    <circle cx="842" cy="367" r="7" fill="#fff" filter="url(#glow)"/>
 
-    <!-- Stop btn -->
-    <rect x="800" y="330" width="80" height="40" rx="20" fill="#fff" opacity="0.07"/>
-    <text x="840" y="355" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-          font-size="14" fill="#fff" opacity="0.6">■ Stop</text>
-
-    <!-- mini player label -->
-    <text x="664" y="418" font-family="Inter,Segoe UI,system-ui,sans-serif"
+    <!-- reading label -->
+    <text x="652" y="392"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
           font-size="12" fill="#a5b4fc" opacity="0.6">Reading sentence 2 of 5…</text>
 
-    <!-- bottom bar -->
-    <rect x="648" y="430" width="544" height="100" rx="10" fill="#1a1a3e" opacity="0.5"/>
-    <text x="920" y="465" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
+    <!-- provider info card -->
+    <rect x="636" y="438" width="568" height="56" rx="10" fill="#1a1a3e" opacity="0.6"/>
+    <text x="920" y="470" text-anchor="middle"
+          font-family="Inter,Segoe UI,system-ui,sans-serif"
           font-size="13" fill="#7c7fa3">Provider: OpenAI  ·  Model: gpt-4o-mini-tts  ·  Voice: nova</text>
 
-    <!-- Wave visualizer at bottom -->
-    <g opacity="0.5" transform="translate(664,490)">
-      <rect x="0"   y="0" width="6" height="20" rx="3" fill="#818cf8"/>
-      <rect x="12"  y="-8" width="6" height="36" rx="3" fill="#a5b4fc"/>
-      <rect x="24"  y="-14" width="6" height="48" rx="3" fill="#c7d2fe"/>
-      <rect x="36"  y="-6" width="6" height="32" rx="3" fill="#a5b4fc"/>
-      <rect x="48"  y="2" width="6" height="16" rx="3" fill="#818cf8"/>
-      <rect x="60"  y="-10" width="6" height="40" rx="3" fill="#a5b4fc"/>
-      <rect x="72"  y="-16" width="6" height="52" rx="3" fill="#c7d2fe"/>
-      <rect x="84"  y="-4"  width="6" height="28" rx="3" fill="#a5b4fc"/>
-      <rect x="96"  y="0"  width="6" height="20" rx="3" fill="#818cf8"/>
-      <rect x="108" y="-12" width="6" height="44" rx="3" fill="#a5b4fc"/>
+    <!-- waveform bottom -->
+    <g opacity="0.55" transform="translate(652,515)">
+      <rect x="0"   y="6"  width="7" height="18" rx="3.5" fill="#818cf8"/>
+      <rect x="14"  y="-4" width="7" height="38" rx="3.5" fill="#a5b4fc"/>
+      <rect x="28"  y="-12" width="7" height="54" rx="3.5" fill="#c7d2fe"/>
+      <rect x="42"  y="0"  width="7" height="30" rx="3.5" fill="#a5b4fc"/>
+      <rect x="56"  y="8"  width="7" height="14" rx="3.5" fill="#818cf8"/>
+      <rect x="70"  y="-8" width="7" height="46" rx="3.5" fill="#a5b4fc"/>
+      <rect x="84"  y="-14" width="7" height="58" rx="3.5" fill="#c7d2fe"/>
+      <rect x="98"  y="-2" width="7" height="34" rx="3.5" fill="#a5b4fc"/>
+      <rect x="112" y="4"  width="7" height="22" rx="3.5" fill="#818cf8"/>
+      <rect x="126" y="-10" width="7" height="50" rx="3.5" fill="#a5b4fc"/>
+      <rect x="140" y="-16" width="7" height="62" rx="3.5" fill="#c7d2fe"/>
+      <rect x="154" y="2"  width="7" height="26" rx="3.5" fill="#a5b4fc"/>
     </g>
   </g>
-
-  <!-- Chrome extension badge -->
-  <rect x="636" y="508" width="220" height="34" rx="17" fill="#fff" opacity="0.1"/>
-  <text x="746" y="530" text-anchor="middle" font-family="Inter,Segoe UI,system-ui,sans-serif"
-        font-size="14" font-weight="500" fill="#fff" opacity="0.8">Chrome Extension  ·  Manifest V3</text>
 </svg>
