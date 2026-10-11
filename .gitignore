@@ -17,3 +17,11 @@ store-assets/*.png
 Thumbs.db
 *.log
 perplexity-tts-*.zip
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Local agent state
+.claude-flow/
